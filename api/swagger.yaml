@@ -35,6 +35,30 @@ info:
   title: Ocha URL Shorten Service
   version: "1.0"
 paths:
+  /{shortcode}:
+    get:
+      description: Get URL Redirect By Shortcode
+      operationId: get-short-url
+      parameters:
+      - description: Shortcode
+        in: path
+        name: shortcode
+        required: true
+        type: string
+      responses:
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: Get URL Redirect By Shortcode
   /shorten:
     post:
       consumes:
@@ -59,7 +83,11 @@ paths:
           description: Bad Request
           schema:
             $ref: '#/definitions/httputil.HTTPError'
-        "404":
+        "409":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "422":
           description: Bad Request
           schema:
             $ref: '#/definitions/httputil.HTTPError'

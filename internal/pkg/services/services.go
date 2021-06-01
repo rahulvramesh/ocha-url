@@ -6,6 +6,7 @@ import (
 	"errors"
 	"github.com/rahulvramesh/ocha-url/internal/app/ocha/models"
 	"github.com/rahulvramesh/ocha-url/internal/pkg/bigcache"
+	"log"
 	"time"
 )
 
@@ -20,6 +21,7 @@ type OchaService struct {
 func (o *OchaService) CheckIfKeyExists(key string) error {
 	_, err := bigcache.GetDS().Get(key)
 	if err != nil {
+		log.Println(err)
 		return errors.New("the the desired shortcode is already in use")
 	}
 
@@ -79,11 +81,17 @@ func (o *OchaService) StoreLink(key, url string) error {
 // CounterAndLastSeen - function to increment counter every time there is a request
 func (o *OchaService) CounterAndLastSeen(key string) error{
 
-	o.Data.Counter++
-	o.Data.LastSeenDate = time.Now()
+	now := time.Now()
+	obj := models.Item{
+		URL:          o.Data.URL,
+		Key:          o.Data.Key,
+		StartDate:    o.Data.StartDate,
+		LastSeenDate: &now,
+		Counter:      o.Data.Counter + 1,
+	}
 
 	reqBodyBytes := new(bytes.Buffer)
-	err := json.NewEncoder(reqBodyBytes).Encode(o.Data)
+	err := json.NewEncoder(reqBodyBytes).Encode(obj)
 	if err != nil {
 		return err
 	}
