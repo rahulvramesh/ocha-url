@@ -21,16 +21,16 @@ type HTTPError struct {
 }
 
 // KeyAlreadyExistsError - error if key already exits
-func KeyAlreadyExistsError (ctx *gin.Context){
-	NewError(ctx,409,errors.New("the the desired shortcode is already in use [shortcodes are case-sensitive]"))
+func KeyAlreadyExistsError(ctx *gin.Context) {
+	NewError(ctx, 409, errors.New("the the desired shortcode is already in use [shortcodes are case-sensitive]"))
 }
 
 // UnexpectedError - 500 error
-func UnexpectedError (ctx *gin.Context){
-	NewError(ctx,500,errors.New("unexpected error occurred"))
+func UnexpectedError(ctx *gin.Context) {
+	NewError(ctx, 500, errors.New("unexpected error occurred"))
 }
 
 // KeyNotFoundError - key not available on the system
-func KeyNotFoundError (ctx *gin.Context){
-	NewError(ctx,404,errors.New("the shortcode cannot be found in the system"))
+func KeyNotFoundError(ctx *gin.Context) {
+	NewError(ctx, 404, errors.New("the shortcode cannot be found in the system"))
 }

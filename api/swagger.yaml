@@ -17,8 +17,6 @@ definitions:
       url:
         example: https://www.google.com
         type: string
-    required:
-    - url
     type: object
   models.CreateResponse:
     properties:
@@ -59,6 +57,34 @@ paths:
           schema:
             $ref: '#/definitions/httputil.HTTPError'
       summary: Get URL Redirect By Shortcode
+  /{shortcode}/stats:
+    get:
+      description: Get Status By Shortcode Handler
+      operationId: get-short-url-status
+      parameters:
+      - description: Shortcode
+        in: path
+        name: shortcode
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.CreateResponse'
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: Get Status By Shortcode Handler
   /shorten:
     post:
       consumes:

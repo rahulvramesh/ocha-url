@@ -124,6 +124,48 @@ var doc = `{
                     }
                 }
             }
+        },
+        "/{shortcode}/stats": {
+            "get": {
+                "description": "Get Status By Shortcode Handler",
+                "summary": "Get Status By Shortcode Handler",
+                "operationId": "get-short-url-status",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "Shortcode",
+                        "name": "shortcode",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "$ref": "#/definitions/models.CreateResponse"
+                        }
+                    },
+                    "404": {
+                        "description": "Not Found",
+                        "schema": {
+                            "$ref": "#/definitions/httputil.HTTPError"
+                        }
+                    },
+                    "500": {
+                        "description": "Internal Server Error",
+                        "schema": {
+                            "$ref": "#/definitions/httputil.HTTPError"
+                        }
+                    },
+                    "default": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/httputil.HTTPError"
+                        }
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -142,9 +184,6 @@ var doc = `{
         },
         "models.CreateRequest": {
             "type": "object",
-            "required": [
-                "url"
-            ],
             "properties": {
                 "shortcode": {
                     "type": "string",

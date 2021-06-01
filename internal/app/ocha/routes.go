@@ -9,13 +9,13 @@ import (
  * Routes Collection
  */
 
-func InitRoutes() *gin.Engine{
+func InitRoutes() *gin.Engine {
 	r := gin.Default()
 
-	r.GET("/ping",handlers.PingHandler)
-	r.POST("/shorten",handlers.CreateShortURLHandler)
-	r.GET("/:shortcode",handlers.GetByShortCodeHandler)
-	r.GET("/:shortcode/stats",handlers.GetStatusHandler)
+	r.GET("/ping", handlers.PingHandler)
+	r.POST("/shorten", handlers.CreateShortURLHandler)
+	r.GET("/:shortcode", handlers.GetByShortCodeHandler)
+	r.GET("/:shortcode/stats", handlers.GetStatusHandler)
 
 	return r
 }

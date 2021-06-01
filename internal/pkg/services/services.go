@@ -10,8 +10,6 @@ import (
 	"time"
 )
 
-
-
 // OchaService - Service  Function Encapsulation
 type OchaService struct {
 	Data models.Item
@@ -56,10 +54,10 @@ func (o *OchaService) StoreLink(key, url string) error {
 
 	// Create Item
 	item := models.Item{
-		URL:     url,
-		Key:     key,
+		URL:       url,
+		Key:       key,
 		StartDate: time.Now(),
-		Counter: 0,
+		Counter:   0,
 	}
 
 	// Convert Struct to byte type for storage
@@ -79,7 +77,7 @@ func (o *OchaService) StoreLink(key, url string) error {
 }
 
 // CounterAndLastSeen - function to increment counter every time there is a request
-func (o *OchaService) CounterAndLastSeen(key string) error{
+func (o *OchaService) CounterAndLastSeen(key string) error {
 
 	now := time.Now()
 	obj := models.Item{
@@ -104,4 +102,3 @@ func (o *OchaService) CounterAndLastSeen(key string) error{
 
 	return nil
 }
-

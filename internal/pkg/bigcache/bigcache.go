@@ -10,14 +10,14 @@ var DS *bigcache.BigCache
 var err error
 
 // InitializeDataSource - global initialization of connection
-func InitializeDataSource(){
+func InitializeDataSource() {
 	DS, err = bigcache.NewBigCache(bigcache.DefaultConfig(10 * time.Minute))
-	if err !=nil {
+	if err != nil {
 		log.Fatal(err)
 	}
 }
 
 // GetDS - Get shared connection
-func GetDS() *bigcache.BigCache{
+func GetDS() *bigcache.BigCache {
 	return DS
 }

@@ -38,7 +38,7 @@ func TestInitializeDataSource(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			InitializeDataSource()
 
-			if DS == nil{
+			if DS == nil {
 				// Throw Error
 				t.Errorf("InitializeDataSource() = %v, want %v", "NIL", "Non Nil")
 			}
