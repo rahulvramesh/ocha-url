@@ -4,6 +4,7 @@
 package main
 
 import (
+	"github.com/gin-gonic/gin"
 	_ "github.com/rahulvramesh/ocha-url/api"
 	"github.com/rahulvramesh/ocha-url/internal/app/ocha"
 	"github.com/rahulvramesh/ocha-url/internal/pkg/bigcache"
@@ -22,8 +23,16 @@ import (
 // @BasePath /
 func main() {
 
+	gin.SetMode(gin.ReleaseMode)
 	// Init Routes
 	r := ocha.InitRoutes()
+
+	// Global middleware
+	r.Use(gin.Logger())
+
+	// Recovery
+	r.Use(gin.Recovery())
+
 	// Initialize Store
 	bigcache.InitializeDataSource()
 
