@@ -34,6 +34,7 @@ func CreateShortURLHandler(ctx *gin.Context) {
 	err := ctx.BindJSON(&req)
 	if err != nil {
 		httputil.NewError(ctx, 400, errors.New("bad request"))
+		return
 	}
 
 	// Validator
@@ -49,6 +50,7 @@ func CreateShortURLHandler(ctx *gin.Context) {
 	if req.Key != "" {
 		if !govalidator.Matches(req.Key, "^[0-9a-zA-Z_]{6}$") {
 			httputil.NewError(ctx, 422, errors.New("invalid characters found in shortcode"))
+			return
 		}
 	} else {
 		req.Key, err = reggen.Generate("^[0-9a-zA-Z_]{6}$", 6)
