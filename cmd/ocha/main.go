@@ -3,6 +3,10 @@
  */
 package main
 
+import (
+	"github.com/rahulvramesh/ocha-url/internal/app/ocha"
+	"github.com/rahulvramesh/ocha-url/internal/pkg/bigcache"
+)
 
 // @title Ocha URL Shorten Service
 // @version 1.0
@@ -15,6 +19,12 @@ package main
 // @BasePath /
 func main() {
 
+	// Init Routes
+	r := ocha.InitRoutes()
 
+	// Initialize Store
+	bigcache.InitializeDataSource()
+
+	r.Run()
 
 }
