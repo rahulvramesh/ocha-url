@@ -23,7 +23,7 @@ import (
 // @BasePath /
 func main() {
 
-	gin.SetMode(gin.ReleaseMode)
+	// gin.SetMode(gin.ReleaseMode)
 	// Init Routes
 	r := ocha.InitRoutes()
 
