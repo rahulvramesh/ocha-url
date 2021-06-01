@@ -19,6 +19,8 @@
 swag init -g cmd/ocha/main.go -o ./api  
 ```  
 
+- Swagger URL : http://localhost:8080/swagger/index.html
+
 ####  Build & Execute
 ```shell 
 make build-release && ./build/bin/ocha  
