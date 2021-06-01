@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// NewError
+// NewError - Build custom errors
 func NewError(ctx *gin.Context, status int, err error) {
 	er := HTTPError{
 		Code:    status,

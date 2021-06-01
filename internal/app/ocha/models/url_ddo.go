@@ -15,8 +15,8 @@ type Item struct {
 
 // CreateRequest - Create Short URL Request
 type CreateRequest struct {
-	URL string `json:"url" example:"https://www.google.com" validate:"required,url"`
-	Key string `json:"shortcode" example:"google"`
+	URL string `json:"url" example:"https://www.google.com" valid:"url,required~url is not present"`
+	Key string `json:"shortcode" example:"google" valid:"stringlength(6|6)~shortcode length should be 6,optional"`
 }
 
 // CreateResponse - 200 Ok

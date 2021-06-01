@@ -5,11 +5,13 @@ go 1.16
 require (
 	github.com/alecthomas/template v0.0.0-20190718012654-fb15b899a751
 	github.com/allegro/bigcache/v3 v3.0.0
+	github.com/asaskevich/govalidator v0.0.0-20210307081110-f21760c49a8d
 	github.com/cpuguy83/go-md2man/v2 v2.0.0 // indirect
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-openapi/spec v0.20.3 // indirect
 	github.com/go-openapi/swag v0.19.15 // indirect
 	github.com/gorilla/mux v1.8.0 // indirect
+	github.com/lucasjones/reggen v0.0.0-20200904144131-37ba4fa293bb
 	github.com/mailru/easyjson v0.7.7 // indirect
 	github.com/pkg/errors v0.8.1 // indirect
 	github.com/rahulvramesh/robo-validator v0.0.0-20200219093531-08c006d94e0f // indirect
