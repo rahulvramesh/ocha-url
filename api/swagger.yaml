@@ -1,0 +1,75 @@
+basePath: /
+definitions:
+  httputil.HTTPError:
+    properties:
+      code:
+        example: 400
+        type: integer
+      message:
+        example: status bad request
+        type: string
+    type: object
+  models.CreateRequest:
+    properties:
+      shortcode:
+        example: google
+        type: string
+      url:
+        example: https://www.google.com
+        type: string
+    required:
+    - url
+    type: object
+  models.CreateResponse:
+    properties:
+      shortcode:
+        example: google
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: rahulvramesh@hotmail.com
+    name: rahulvramesh
+  description: Ocha URL Shorten Service
+  title: Ocha URL Shorten Service
+  version: "1.0"
+paths:
+  /shorten:
+    post:
+      consumes:
+      - application/json
+      description: Create short url handler
+      operationId: create-short-url
+      parameters:
+      - description: New Short URL
+        in: body
+        name: short-url
+        required: true
+        schema:
+          $ref: '#/definitions/models.CreateRequest'
+      produces:
+      - application/json
+      responses:
+        "201":
+          description: Created
+          schema:
+            $ref: '#/definitions/models.CreateResponse'
+        "400":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "404":
+          description: Bad Request
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+        default:
+          description: ""
+          schema:
+            $ref: '#/definitions/httputil.HTTPError'
+      summary: Create short url handler
+swagger: "2.0"

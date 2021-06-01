@@ -4,21 +4,16 @@ import (
 	"bytes"
 	"encoding/json"
 	"errors"
+	"github.com/rahulvramesh/ocha-url/internal/app/ocha/models"
 	"github.com/rahulvramesh/ocha-url/internal/pkg/bigcache"
 	"time"
 )
 
-type Item struct {
-	URL     string
-	Key     string
-	StartDate time.Time
-	LastSeenDate time.Time
-	Counter int //redirectCount
-}
+
 
 // OchaService - Service  Function Encapsulation
 type OchaService struct {
-	Data Item
+	Data models.Item
 }
 
 // CheckIfKeyExists - check if the key already added to the DS
@@ -58,7 +53,7 @@ func (o *OchaService) GetByKey(key string) error {
 func (o *OchaService) StoreLink(key, url string) error {
 
 	// Create Item
-	item := Item{
+	item := models.Item{
 		URL:     url,
 		Key:     key,
 		StartDate: time.Now(),

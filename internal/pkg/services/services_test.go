@@ -1,6 +1,7 @@
 package services
 
 import (
+	"github.com/rahulvramesh/ocha-url/internal/app/ocha/models"
 	"github.com/rahulvramesh/ocha-url/internal/pkg/bigcache"
 	"testing"
 )
@@ -12,7 +13,7 @@ func TestOchaService_GetByKey(t *testing.T) {
 	_ = tObj.StoreLink("google", "https://google.com")
 
 	type fields struct {
-		Data Item
+		Data models.Item
 	}
 	type args struct {
 		key string
@@ -54,7 +55,7 @@ func TestOchaService_CheckIfKeyExists(t *testing.T) {
 	_ = tObj.StoreLink("google", "https://google.com")
 
 	type fields struct {
-		Data Item
+		Data models.Item
 	}
 	type args struct {
 		key string
@@ -93,7 +94,7 @@ func TestOchaService_StoreLink(t *testing.T) {
 	bigcache.InitializeDataSource()
 
 	type fields struct {
-		Data Item
+		Data models.Item
 	}
 	type args struct {
 		key string

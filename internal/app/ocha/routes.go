@@ -13,5 +13,6 @@ func InitRoutes() *gin.Engine{
 	r := gin.Default()
 
 	r.GET("/ping",handlers.PingHandler)
+	r.POST("/shorten",handlers.CreateShortURLHandler)
 	return r
 }
